@@ -13,11 +13,11 @@ import SignUp from './SignUp'
 import Swal from 'sweetalert2'
 const SignIn = () => {
   const clientId =
-    '78527833894-ao0e2761t8gbk4qijevpihcamn5ltlj9.apps.googleusercontent.com'
+    '782663826370-4ac6tc1t9mu5jim9frpcifach02qsuoa.apps.googleusercontent.com'
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [sideKey, setSideKey] = useState(
-    '6LdfshcjAAAAAHnu08PuFr0edhzcfFCjILuyM3QA'
+    '6LfdMiApAAAAAI1ciCiZHlEMPWFnnKDQhOst95Ci'
   )
   const [token, setToken] = useState('')
   const navigate = useNavigate()
@@ -34,6 +34,9 @@ const SignIn = () => {
   }
 
   const onSuccess = async (res) => {
+    console.log(token);
+    console.log("/n");
+    console.log(res);
     if (token) {
       const Auth = await axios
         .post(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/auth/google`, {

@@ -134,6 +134,7 @@ const Header = () => {
                         Tài khoản
                       </Link>
                     </li>
+                    { console.log("Role: " + jwt_decode(localStorage.getItem('token')).role) }
                     {jwt_decode(localStorage.getItem('token')).role.rolename ===
                       'Admin' && (
                       <li>
