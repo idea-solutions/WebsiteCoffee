@@ -59,13 +59,15 @@ const ItemDetail = () => {
           String.fromCharCode(...new Uint8Array(res.data.image.data.data))
         )}`
       )
-      setCategory(res.data.categoryproductid._id)
+      setCategory(res.data.categoryproductid)
+      console.log("categoryproductid: " + res.data);
     })
   }, [id])
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL ? `${process.env.REACT_APP_URL}` : `http://localhost:8000`}/product`).then((res) => {
       setProduct(res.data)
+      console.log("product: " + res.data);
     })
   }, [])
   useEffect(() => {
@@ -234,7 +236,7 @@ const ItemDetail = () => {
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {product
               .filter((cate) => {
-                return cate.categoryproductid._id == category
+                return cate.categoryproductid == category
               })
               .map((item) => (
                 <Link to={`/product/${item._id}`}>
